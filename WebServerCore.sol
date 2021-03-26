@@ -13,6 +13,8 @@ contract WebServerCore {
     
     bytes32 constant emptyString = 0x569e75fc77c1a856f6daaf9e69d8a9566ca34aa47f9133711ce065a571af0cfd;
     
+    event WebHashCreated(bytes32);
+    
     struct WebPage {
         string pageName;
         address owner;
@@ -75,6 +77,8 @@ contract WebServerCore {
         WebDirectory[_thisWebHash] = _newPage;
         
         WebPageCount++;
+        
+        emit WebHashCreated(_thisWebHash);
         
         return _thisWebHash;
     }
