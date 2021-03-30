@@ -39,7 +39,7 @@ function uploadFileFromPage(event){
           statusField.innerText = "Webhash created at " + webHash;
         });
       } else if (validateHashInput(webhashInput.value)){
-        WebContractObj.methods.updateWebPage(webhashInput.value, text).send({from:cthweb3.givenProvider.selectedAddress})
+        WebContractObj.methods.updateWebPage(cthweb3webhashInput.value, text).send({from:cthweb3.givenProvider.selectedAddress})
         .then(function(receipt){
           var webHash = receipt.events.WebHashCreated.returnValues[0];
           // console.log(receipt.events.WebHashCreated.returnValues[0]);
