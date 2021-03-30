@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/scripts/bower_components/web3/dist/web3.min.js"></script>
+    <script type="text/javascript" src="/scripts/settings.js"></script>
+    <script type="text/javascript" src="/scripts/uploadpage.js"></script>
+    <title>Upload your file</title>
+  </head>
+  <body>
+    <h1>Upload your file on CWeb</h1>
+    <div id="uploadframe">
+      <span>Upload from file</span>
+      <input type="file" onchange="uploadFileFromPage(event)">
+      <p>Status: <span id="statusfield">n/a</span></p>
+    </div>
+    <div id="errorframe" hidden=true>
+      <p>Error: Please connect to wallet</p>
+    </div>
+    <script type="text/javascript">
+      var uploadFrame = document.getElementById("uploadframe");
+      var errorFrame = document.getElementById("errorframe");
+      var statusField = document.getElementById("statusfield");
+        initWallet(function (e) {
+          if (e){
+            uploadFrame.hidden = true;
+            errorFrame.hidden = false;
+            console.log(e);
+          } else {
+            console.log("We are good.");
+          }
+        });
+    </script>
+  </body>
+</html>

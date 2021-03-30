@@ -1,0 +1,165 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "WebHashCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "WebPageCount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_webHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "deleteWebPage",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_webHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "retrieveWebPageData",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_webHash",
+				"type": "bytes32"
+			}
+		],
+		"name": "retrieveWebPageMetaData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "pageName",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "webData",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "created",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastUpdate",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct WebServerCore.WebPage",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "_webHash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "string",
+				"name": "_webData",
+				"type": "string"
+			}
+		],
+		"name": "updateWebPage",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_pageName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_webData",
+				"type": "string"
+			}
+		],
+		"name": "uploadNewWebPage",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
