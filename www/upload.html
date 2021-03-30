@@ -10,6 +10,7 @@
   <body>
     <h1>Upload your file on CWeb</h1>
     <div id="uploadframe">
+      <p><span>Enter WebHash to Update Your Page: </span><input id="webhashinput" type="text" name="webhashvalue" size=80></p>
       <span>Upload from file</span>
       <input type="file" onchange="uploadFileFromPage(event)">
       <p>Status: <span id="statusfield">n/a</span></p>
@@ -21,6 +22,7 @@
       var uploadFrame = document.getElementById("uploadframe");
       var errorFrame = document.getElementById("errorframe");
       var statusField = document.getElementById("statusfield");
+      var webhashInput = document.getElementById("webhashinput");
         initWallet(function (e) {
           if (e){
             uploadFrame.hidden = true;

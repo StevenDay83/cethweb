@@ -31,12 +31,21 @@ function uploadFileFromPage(event){
       var text = reader.result;
       console.log(text);
 
-      WebContractObj.methods.uploadNewWebPage("I need a name", text).send({from:cthweb3.givenProvider.selectedAddress})
-      .then(function (receipt) {
-        var webHash = receipt.events.WebHashCreated.returnValues[0];
-        // console.log(receipt.events.WebHashCreated.returnValues[0]);
-        statusField.innerText = "Webhash created at " + webHash;
-      });
+      if (webhashInput.value == "") {
+        WebContractObj.methods.uploadNewWebPage("I need a name", text).send({from:cthweb3.givenProvider.selectedAddress})
+        .then(function (receipt) {
+          var webHash = receipt.events.WebHashCreated.returnValues[0];
+          // console.log(receipt.events.WebHashCreated.returnValues[0]);
+          statusField.innerText = "Webhash created at " + webHash;
+        });
+      } else if (validateHashInput(webhashInput.value)){
+        WebContractObj.methods.updateWebPage(webhashInput.value, text).send({from:cthweb3.givenProvider.selectedAddress})
+        .then(function(receipt){
+          var webHash = receipt.events.WebHashCreated.returnValues[0];
+          // console.log(receipt.events.WebHashCreated.returnValues[0]);
+          statusField.innerText = "Webhash uploaded at " + webHash;
+        });
+      }
     }
 
     reader.readAsText(input.files[0]);
@@ -44,4 +53,8 @@ function uploadFileFromPage(event){
     // TODO: Throw error
     console.error(e);
   }
+}
+
+function validateHashInput(webhashtext) {
+  return (webhashtext.startsWith("0x") && webhashtext.length == 66)
 }
