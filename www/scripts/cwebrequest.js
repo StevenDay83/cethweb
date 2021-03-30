@@ -33,14 +33,14 @@ function parseWebHash(hashAddress) {
 function loadCthHashPage() {
   var thisWebHash = getURLWebHash();
 
-  if (thisWebHash != undefined){
-    cthweb3.eth.call({
-      "to":CthwebSettings.webcorecontract,
-      "data":CthwebSettings.cthwebfunctionsig + parseWebHash(getURLWebHash())
-    }).then(processCwebData);
-  } else {
-    callback(new Error("No Hash Selected"));
+  if (thisWebHash == undefined){
+    thisWebHash = "0x0000000000000000000000000000000000000000000000000000000000000000";
   }
+
+  cthweb3.eth.call({
+    "to":CthwebSettings.webcorecontract,
+    "data":CthwebSettings.cthwebfunctionsig + parseWebHash(thisWebHash)
+  }).then(processCwebData);
 }
 
 function processCwebData(cwebDataHexString){
