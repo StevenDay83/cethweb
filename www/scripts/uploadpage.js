@@ -39,11 +39,11 @@ function uploadFileFromPage(event){
           statusField.innerText = "Webhash created at " + webHash;
         });
       } else if (validateHashInput(webhashInput.value)){
-        WebContractObj.methods.updateWebPage(cthweb3webhashInput.value, text).send({from:cthweb3.givenProvider.selectedAddress})
+        WebContractObj.methods.updateWebPage(webhashInput.value, text).send({from:cthweb3.givenProvider.selectedAddress})
         .then(function(receipt){
-          var webHash = receipt.events.WebHashCreated.returnValues[0];
+          // var webHash = receipt.events.WebHashCreated.returnValues[0];
           // console.log(receipt.events.WebHashCreated.returnValues[0]);
-          statusField.innerText = "Webhash uploaded at " + webHash;
+          statusField.innerText = "Webhash uploaded at " + webhashInput.value;
         });
       }
     }
